@@ -12,9 +12,16 @@
   cursor: grab;
   background: #6caddc;
 }
+.card-header {
+  background: none;
+  border-bottom: none;
+}
+hr {
+  border: none;
+}
 
 .card {
-  background: transparent;
+  background: none;
   border: none;
 }
 .img-container {

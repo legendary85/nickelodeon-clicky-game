@@ -1,7 +1,9 @@
 .wrapper {
-  padding-top: 10px;
-  background: #f1f1f1;
-
+  padding-top: 20px;
+  background: #40d802;
+  /* background-image: url("https://1.bp.blogspot.com/-dV5F4jkTqt8/XOOwni4aNkI/AAAAAAAADF4/AcVRxpHu0Wc0ZduiXs3UZbfPX0F3nca_QCLcBGAs/s1600/nickelodeonclassicwp01-edit.png"); */
+  background-size: cover;
+  background-repeat: no-repeat;
   height: 100%;
   display: flex;
   flex-flow: row wrap;
@@ -10,4 +12,5 @@
   justify-content: space-around;
   align-content: flex-start;
   overflow: auto;
+  padding-bottom: 75px;
 }

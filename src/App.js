@@ -4,7 +4,8 @@ import Wrapper from "./components/Wrapper";
 import FriendCard from "./components/FriendCard";
 import Title from "./components/Title";
 import friends from "./friends.json";
-import "./App.js";
+import Footer from "./components/Footer";
+import "./App.css";
 
 //Declare variables to correctGuesses, bestScore and clickMessage
 let correctGuesses = 0;
@@ -105,12 +106,14 @@ class App extends Component {
       <Wrapper>
         <Title>Nickelodeon Clicky Game</Title>
         {/* This is the Score Card  */}
-        <h3 className="scoreSummary">{this.state.clickMessage}</h3>
-        <h3 className="scoreSummary card-header">
+        {/* <h3 className="scoreSummary">{this.state.clickMessage}</h3> */}
+        <h5 className="scoreSummary card-header">
+          {this.state.clickMessage}
+          <hr />
           Correct Gusses: {this.state.correctGuesses}
           <br />
           Best Score: {this.state.bestScore}
-        </h3>
+        </h5>
         {/* Container for game */}
         <div className="container">
           <div className="row">
@@ -124,6 +127,7 @@ class App extends Component {
             ))}
           </div>
         </div>
+        <Footer />
       </Wrapper>
     );
   }
