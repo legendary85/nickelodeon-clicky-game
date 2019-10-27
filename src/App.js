@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import friends from "./friends.json";
 
 class App extends Component {
   state = {};
