@@ -21,78 +21,82 @@ class App extends Component {
     clickMessage
   };
 
-  // setClicked = id => {
-  //   //make a copy of the state matches array to work with
-  //   const matches = this.state.friends;
+  setClicked = id => {
+    //make a copy of the state matches array to work with
+    const matches = this.state.friends;
+    console.log(`Matches: ${matches}`);
 
-  //   //Filter for the clicked match
-  //   const clickedMatch = matches.filter(match => match.id === id);
+    //Filter for the clicked match
+    const clickedMatch = matches.filter(match => match.id === id);
+    console.log(`Clicked Matched: ${clickedMatch}`);
+    //If the matched image's clicked value is already true, results in game over actions
 
-  //   //If the matched image's clicked value is already true, results in game over actions
+    if (clickedMatch[0].clicked) {
+      console.log("Correct Guesses: " + correctGuesses);
+      console.log("Best score" + bestScore);
 
-  //   if (clickedMatch[0].clicked) {
-  //     console.log("Correct Guesses: " + correctGuesses);
-  //     console.log("Best score" + bestScore);
+      correctGuesses = 0;
+      clickMessage = "You already clicked this one.";
 
-  //     correctGuesses = 0;
-  //     clickMessage = "You already clicked this one.";
+      for (let i = 0; i < matches.length; i++) {
+        matches[i].clicked = false;
+      }
+      this.setState({ clickMessage });
+      this.setState({ correctGuesses });
+      this.setState({ matches });
+      console.log(
+        `Message: ${clickMessage} Correct Guesses: ${correctGuesses} Matches: ${matches}`
+      );
 
-  //     for (let i = 0; i < matches.length; i++) {
-  //       matches[i].clicked = false;
-  //     }
-  //     this.setState({ clickMessage });
-  //     this.setState({ correctGuesses });
-  //     this.setState({ matches });
+      //if clicked = false and user hasn't finished
+    } else if (correctGuesses < 11) {
+      //set it's value to true
+      clickedMatch[0].clicked = true;
+      //increment counter
+      correctGuesses++;
 
-  //     //if clicked = false and user hasn't finished
-  //   } else if (correctGuesses < 11) {
-  //     //set it's value to true
-  //     clickedMatch[0].clicked = true;
-  //     //increment counter
-  //     correctGuesses++;
+      clickMessage = "Keep going!";
 
-  //     clickMessage = "Keep going!";
+      if (correctGuesses > bestScore) {
+        bestScore = correctGuesses;
+        this.setState({ bestScore });
+      }
 
-  //     if (correctGuesses > bestScore) {
-  //       bestScore = correctGuesses;
-  //       this.setState({ bestScore });
-  //     }
+      //Shuffle the array to be rendered in a random order
+      matches.sort(function(a, b) {
+        return 0.5 - Math.random();
+      });
 
-  //     //Shuffle the array to be rendered in a random order
-  //     matches.sort(function(a, b) {
-  //       return 0.5 - Math.random();
-  //     });
+      //Set this state.matches equal to the new matches array
+      this.setState({ matches });
+      this.setState({ correctGuesses });
+      this.setState({ clickMessage });
+    } else {
+      //Set it value to true
+      clickedMatch[0].clicked = true;
 
-  //     //Set this state.matches equal to the new matches array
-  //     this.setState({ matches });
-  //     this.setState({ correctGuesses });
-  //     this.setState({ clickMessage });
-  //   } else {
-  //     //Set it value to true
-  //     clickedMatch[0].clicked = true;
+      //Restart the guess counter
+      correctGuesses = 0;
 
-  //     //Restart the guess counter
-  //     correctGuesses = 0;
+      clickMessage = "Let's see if you can do it again!";
+      bestScore = 12;
+      this.setState({ bestScore });
 
-  //     clickMessage = "Let's see if you can do it again!";
-  //     bestScore = 12;
-  //     this.setState({ bestScore });
+      for (let i = 0; i < matches.length; i++) {
+        matches[i].clicked = false;
+      }
 
-  //     for (let i = 0; i < matches.length; i++) {
-  //       matches[i].clicked = false;
-  //     }
+      //shuffle the array to be rendered in a randon order
+      matches.sort(function(a, b) {
+        return 0.5 - Math.random();
+      });
 
-  //     //shuffle the array to be rendered in a randon order
-  //     matches.sort(function(a, b) {
-  //       return 0.5 - Math.random();
-  //     });
-
-  //     //Set this.state.matches equal the new matches array
-  //     this.setState({ matches });
-  //     this.setState({ correctGuesses });
-  //     this.setState({ clickMessage });
-  //   }
-  // };
+      //Set this.state.matches equal the new matches array
+      this.setState({ matches });
+      this.setState({ correctGuesses });
+      this.setState({ clickMessage });
+    }
+  };
 
   render() {
     return (
@@ -109,7 +113,12 @@ class App extends Component {
         <div className="container">
           <div className="row">
             {this.state.friends.map(match => (
-              <FriendCard id={match.id} key={match.id} image={match.image} />
+              <FriendCard
+                setClicked={this.setClicked}
+                id={match.id}
+                key={match.id}
+                image={match.image}
+              />
             ))}
           </div>
         </div>
