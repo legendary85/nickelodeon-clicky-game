@@ -21,6 +21,7 @@ class App extends Component {
     clickMessage
   };
 
+  //set a click listener that passes in an id that will change the state of the image to "true"
   setClicked = id => {
     //make a copy of the state matches array to work with
     const matches = this.state.friends;
@@ -31,9 +32,9 @@ class App extends Component {
     console.log(`Clicked Matched: ${clickedMatch}`);
     //If the matched image's clicked value is already true, results in game over actions
 
+    //if clickedMatch = clicked "true" game will score will go to 0 and  a message will read " You already clicked on this one" . Images will re-render and set clicked to false
     if (clickedMatch[0].clicked) {
       console.log("Correct Guesses: " + correctGuesses);
-      console.log("Best score" + bestScore);
 
       correctGuesses = 0;
       clickMessage = "You already clicked this one.";
@@ -48,7 +49,7 @@ class App extends Component {
         `Message: ${clickMessage} Correct Guesses: ${correctGuesses} Matches: ${matches}`
       );
 
-      //if clicked = false and user hasn't finished
+      //if image clicked = false and user hasn't finished
     } else if (correctGuesses < 11) {
       //set it's value to true
       clickedMatch[0].clicked = true;
@@ -57,6 +58,7 @@ class App extends Component {
 
       clickMessage = "Keep going!";
 
+      //If correctGuess is greater than bestScore; bestScore will be set to correctGuesses number
       if (correctGuesses > bestScore) {
         bestScore = correctGuesses;
         this.setState({ bestScore });
