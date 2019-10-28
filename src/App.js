@@ -11,7 +11,7 @@ import "./App.css";
 let correctGuesses = 0;
 let bestScore = 0;
 let clickMessage =
-  "Click on a picture to gain points! Click on the same on twice and you lose the game.";
+  "Click on a picture to gain points! Click on the same one twice and you lose the game.";
 
 class App extends Component {
   //Setting this.state matches to the matches json array
