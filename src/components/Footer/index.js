@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "font-awesome/css/font-awesome.min.css";
+import "./style.css";
 
 var style = {
   backgroundColor: "#f57c15",
@@ -16,9 +17,9 @@ var style = {
 class Footer extends Component {
   render() {
     return (
-      <div style={style}>
+      <div className="footer" style={style}>
         {this.props.children}
-        <div>
+        <div className="footerName">
           <a
             href={"https://github.com/legendary85/nickelodeon-clicky-game"}
             target={"blank"}

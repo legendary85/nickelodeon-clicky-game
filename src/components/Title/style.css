@@ -2,10 +2,13 @@
   width: 100%;
   font-family: "Luckiest Guy", cursive;
   text-align: center;
+  letter-spacing: 2px;
   font-size: 3rem;
   text-decoration: none;
   color: #f57c15;
   margin-bottom: 50px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 @media only screen and (max-width: 568px) {

@@ -1,0 +1,9 @@
+@media only screen and (max-width: 568px) {
+  .footer {
+    padding: 40px !important;
+  }
+
+  .footerName {
+    font-size: 10px;
+  }
+}
