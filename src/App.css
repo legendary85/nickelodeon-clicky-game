@@ -25,3 +25,9 @@
   font-family: "Luckiest Guy", cursive;
   text-align: center;
 }
+
+@media only screen and (max-width: 568px) {
+  .scoreSummary {
+    font-size: 15px;
+  }
+}

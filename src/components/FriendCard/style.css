@@ -67,3 +67,13 @@ img:hover {
     transform: translate(1px, -2px) rotate(-1deg);
   }
 }
+
+/* Portrait and Landscape */
+
+@media only screen and (max-width: 568px) {
+  .img {
+    height: 70px !important;
+    width: 70px !important;
+    margin: 20px !important;
+  }
+}
